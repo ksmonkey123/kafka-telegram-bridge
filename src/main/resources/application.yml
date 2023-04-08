@@ -1,0 +1,10 @@
+bridge:
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS}
+    group-id: ${KAFKA_GROUP_ID}
+    topic: ${KAFKA_TOPIC}
+
+  telegram:
+    token: ${TELEGRAM_TOKEN}
+    chat-id: ${TELEGRAM_CHAT_ID}
+    footer: ${TELEGRAM_FOOTER}
