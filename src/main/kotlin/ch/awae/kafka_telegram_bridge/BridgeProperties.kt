@@ -9,8 +9,6 @@ data class BridgeProperties(
 )
 
 data class KafkaProperties(
-    val bootstrapServers: String,
-    val groupId: String,
     val topic: String,
 )
 

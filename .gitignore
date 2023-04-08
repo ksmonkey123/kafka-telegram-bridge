@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### config folder contains dev credentials. should not be pushed... ###
+/config/
