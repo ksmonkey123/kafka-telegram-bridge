@@ -25,7 +25,8 @@ class TelegramClient(val http: RestTemplate, config: BridgeProperties) {
 
         val map = mapOf(
             "chat_id" to chat,
-            "text" to "$message\n\n--$footer"
+            "text" to "$message\n\n--$footer",
+            "parse_mode" to "HTML",
         )
 
         val entity = HttpEntity(map, headers)
