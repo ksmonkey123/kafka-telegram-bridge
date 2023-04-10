@@ -7,11 +7,11 @@ import java.util.logging.Logger
 @Component
 class MessageProcessor(val client: TelegramClient) {
 
-    val logger = Logger.getLogger(javaClass.name)
+    val logger: Logger = Logger.getLogger(javaClass.name)
 
     @KafkaListener(topics = ["\${bridge.kafka.topic}"])
     fun handleNotificationMessage(message: String) {
-        logger.info("handling message: ${message.replace("\n", "\\n")}")
+        logger.info("handling message: \"${message.replace("\n", "\\n")}\"")
         client.sendMessage(message)
     }
 
