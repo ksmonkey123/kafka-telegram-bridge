@@ -11,7 +11,7 @@ class MessageProcessor(val client: TelegramClient) {
 
     @KafkaListener(topics = ["\${bridge.kafka.topic}"])
     fun handleNotificationMessage(message: String) {
-        logger.info("handling message: $message")
+        logger.info("handling message: ${message.replace("\n", "\\n")}")
         client.sendMessage(message)
     }
 
