@@ -10,6 +10,8 @@ data class BridgeProperties(
 
 data class KafkaProperties(
     val topic: String,
+    val groupId: String,
+    val bootstrapServers: String,
 )
 
 data class TelegramProperties(

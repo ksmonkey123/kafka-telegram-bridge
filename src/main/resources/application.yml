@@ -1,17 +1,10 @@
 bridge:
   kafka:
     topic: ${KAFKA_TOPIC}
+    group-id: ${KAFKA_GROUP_ID}
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS}
 
   telegram:
     token: ${TELEGRAM_TOKEN}
     chat-id: ${TELEGRAM_CHAT_ID}
     footer: ${TELEGRAM_FOOTER}
-
-spring:
-  kafka:
-    consumer:
-      bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS}
-      auto-offset-reset: earliest
-      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      group-id: ${KAFKA_GROUP_ID}
