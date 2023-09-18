@@ -29,9 +29,10 @@ class TelegramClient(val http: RestTemplate, config: BridgeProperties) {
                 "text" to "$message\n\n--$footer",
                 "parse_mode" to "HTML"
             )
+
             TelegramMessageFormat.MARKDOWN -> mapOf(
                 "chat_id" to chat,
-                "text" to "$message\n\n\\-\\-${footer.replace("-", "\\-")}",
+                "text" to "$message\n\n\\-\\-${escapeFooter(footer)}",
                 "parse_mode" to "MarkdownV2"
             )
         }
@@ -39,6 +40,16 @@ class TelegramClient(val http: RestTemplate, config: BridgeProperties) {
         val entity = HttpEntity(map, headers)
 
         http.postForEntity(url, entity, Any::class.java)
+    }
+
+    val charsToEscape = listOf('_', '*', '[', ']', '(', ')', '~', '`', '>', '#', '+', '-', '=', '|', '{', '}', '.', '!')
+
+    private fun escapeFooter(footer: String): String {
+        var temp = footer
+        for (char in charsToEscape) {
+            temp = temp.replace("$char", "\\$char")
+        }
+        return temp
     }
 
 }
